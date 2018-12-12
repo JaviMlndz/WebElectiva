@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form method="POST" action="controlador_consultas">
+            
+            
+            <imput value="">Enviar</imput>
+        </form>
     </body>
 </html>
