@@ -55,7 +55,7 @@ public class ConsultasDAO {
     
     }
     }
-      public String ConsultasPorPaciente(int dui_paciente){
+      public String ConsultasPorPaciente(String dui_paciente){
            
     SessionFactory sessionFactory=null;
     Session session=null;
@@ -82,5 +82,74 @@ public class ConsultasDAO {
       
       
       }
+    public List<Consulta> ConsultasTodosPaciente(){
+           
+    SessionFactory sessionFactory=null;
+    Session session=null;
+    Transaction trandaction=null;
     
+    sessionFactory=HibernateUtil.getSessionFactory();
+    session=sessionFactory.openSession();
+    Query query=session.createQuery("from Consulta");
+    List<Consulta> lista=query.list();
+    session.close();  
+    
+    return lista;
+    }
+        public String ConsultasPorMedico(String dui_medico){
+           
+    SessionFactory sessionFactory=null;
+    Session session=null;
+    Transaction trandaction=null;
+    
+    sessionFactory=HibernateUtil.getSessionFactory();
+    session=sessionFactory.openSession();
+    Consulta c =(Consulta)session.get(Consulta.class, dui_medico);
+session.close();
+    if(c!=null)
+    {
+      return "Paciente: "+c.getPaciente()+
+              "Razon Consulta: "+c.getRazonConsulta()+
+              "Sintomas: "+ c.getSintomas()+
+              "Fecha Consulta: "+c.getFecha()+
+              "Hora Consulta: "+c.getHora();
+      
+    }else{
+    
+    return "Sin Resultados!!! No esta registrado el dui que ingreso";
+    }
+      
+      
+      
+      }
+       public String ConsultasPorEstado(int estado){
+           
+    SessionFactory sessionFactory=null;
+    Session session=null;
+    Transaction trandaction=null;
+    
+    sessionFactory=HibernateUtil.getSessionFactory();
+    session=sessionFactory.openSession();
+    Consulta c =(Consulta)session.get(Consulta.class, estado);
+    session.close();
+    if(c!=null)
+    {
+      return "Paciente: "+c.getPaciente()+
+              "Razon Consulta: "+c.getRazonConsulta()+
+              "Sintomas: "+ c.getSintomas()+
+              "Fecha Consulta: "+c.getFecha()+
+              "Hora Consulta: "+c.getHora();
+      
+    }else{
+    
+    return "Sin Resultados!!! No esta registrado el dui que ingreso";
+    }
+      
+      }
+   
 }
+     
+   
+      
+      
+    
