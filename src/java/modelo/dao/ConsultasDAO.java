@@ -19,7 +19,7 @@ import java.util.List;
 public class ConsultasDAO {
     
     
-    public void IngresarConsulta(Consulta c){
+    /*public void IngresarConsulta(Consulta c){
     SessionFactory sessionFactory=null;
     Session session=null;
     Transaction trandaction=null;
@@ -35,9 +35,12 @@ public class ConsultasDAO {
         trandaction.rollback();
         throw new RuntimeException("Registro No Guardado!!!");
     
-    }}
+    }}*/
     
-    public void ActualizarConsulta(Consulta c,String dui,String fecha,String hora){
+     
+    
+    
+    /*public void ActualizarConsulta(Consulta c,String dui,String fecha,String hora){
     SessionFactory sessionFactory=null;
     Session session=null;
     Transaction trandaction=null;
@@ -54,8 +57,8 @@ public class ConsultasDAO {
         throw new RuntimeException("Registro No Guardado!!!");
     
     }
-    }
-      public String ConsultasPorPaciente(String dui_paciente){
+    }*/
+      /*public String ConsultasPorPaciente(String dui_paciente){
            
     SessionFactory sessionFactory=null;
     Session session=null;
@@ -81,8 +84,9 @@ public class ConsultasDAO {
       
       
       
-      }
-    public List<Consulta> ConsultasTodosPaciente(){
+      }*/
+      
+    /*public List<Consulta> ConsultasTodosPaciente(){
            
     SessionFactory sessionFactory=null;
     Session session=null;
@@ -121,8 +125,8 @@ session.close();
       
       
       
-      }
-       public String ConsultasPorEstado(int estado){
+      }*/
+       /*public String ConsultasPorEstado(int estado){
            
     SessionFactory sessionFactory=null;
     Session session=null;
@@ -145,7 +149,72 @@ session.close();
     return "Sin Resultados!!! No esta registrado el dui que ingreso";
     }
       
-      }
+      }*/
+        public List<Consulta> listar_consultas() {
+        List<Consulta> lista = null;
+        Session sesion = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = sesion.beginTransaction();
+        String hql = "FROM Consulta";
+        try {
+            lista = sesion.createQuery(hql).list();
+            t.commit();
+            sesion.close();
+        } catch (Exception e) {
+            t.rollback();
+        }
+        return lista;
+    }
+       
+        public void agregar_consulta(Consulta consulta) {
+        Session sesion = null;
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            sesion.beginTransaction();
+            sesion.save(consulta);
+            sesion.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            sesion.getTransaction().rollback();
+        } finally {
+            if (sesion != null) {
+                sesion.close();
+            }
+        }
+    }
+
+    public void modificar_consulta(Consulta consulta) {
+        Session sesion = null;
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            sesion.beginTransaction();
+            sesion.update(consulta);
+            sesion.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            sesion.getTransaction().rollback();
+        } finally {
+            if (sesion != null) {
+                sesion.close();
+            }
+        }
+    }
+
+    public void eliminar_consulta(Consulta consulta) {
+        Session sesion = null;
+        try {
+            sesion = HibernateUtil.getSessionFactory().openSession();
+            sesion.beginTransaction();
+            sesion.delete(consulta);
+            sesion.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            sesion.getTransaction().rollback();
+        } finally {
+            if (sesion != null) {
+                sesion.close();
+            }
+        }
+    }
    
 }
      

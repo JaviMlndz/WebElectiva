@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-11-2018 10:46:32 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.pojos.Enfermeras" table="enfermeras" catalog="clinicautec_db" optimistic-lock="version">
+        <id name="duiEnfermera" type="string">
+            <column name="dui_enfermera" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <property name="clave" type="string">
+            <column name="clave" length="30" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="40" not-null="true" />
+        </property>
+        <set name="recetases" table="recetas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dui_enfermera" length="20" not-null="true" />
+            </key>
+            <one-to-many class="modelo.pojos.Recetas" />
+        </set>
+    </class>
+</hibernate-mapping>

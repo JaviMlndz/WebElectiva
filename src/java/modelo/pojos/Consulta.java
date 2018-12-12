@@ -21,8 +21,8 @@ public class Consulta  implements java.io.Serializable {
     public Consulta() {
     }
 
-	
-    public Consulta(Paciente paciente, String razonConsulta, String sintomas, String fecha, String hora, int estadoConsulta) {
+    public Consulta(Medicos medicos, Paciente paciente, String razonConsulta, String sintomas, String fecha, String hora, int estadoConsulta) {
+        this.medicos = medicos;
         this.paciente = paciente;
         this.razonConsulta = razonConsulta;
         this.sintomas = sintomas;
@@ -30,16 +30,13 @@ public class Consulta  implements java.io.Serializable {
         this.hora = hora;
         this.estadoConsulta = estadoConsulta;
     }
-    public Consulta(Medicos medicos, Paciente paciente, String razonConsulta, String sintomas, String fecha, String hora, int estadoConsulta) {
-       this.medicos = medicos;
-       this.paciente = paciente;
-       this.razonConsulta = razonConsulta;
-       this.sintomas = sintomas;
-       this.fecha = fecha;
-       this.hora = hora;
-       this.estadoConsulta = estadoConsulta;
+
+    public Consulta(Object medicos, Object paciente, String razonConsulta, String sintomas, String fecha, String hora, String estadoConsulta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
+
+
+  
     public Integer getIdConsulta() {
         return this.idConsulta;
     }

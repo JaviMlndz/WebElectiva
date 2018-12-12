@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-11-2018 10:46:32 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.pojos.Consulta" table="consulta" catalog="clinicautec_db" optimistic-lock="version">
+        <id name="idConsulta" type="java.lang.Integer">
+            <column name="id_consulta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="medicos" class="modelo.pojos.Medicos" fetch="select">
+            <column name="dui_medico" length="20" />
+        </many-to-one>
+        <many-to-one name="paciente" class="modelo.pojos.Paciente" fetch="select">
+            <column name="dui_paciente" length="20" not-null="true" />
+        </many-to-one>
+        <property name="razonConsulta" type="string">
+            <column name="razon_consulta" length="40" not-null="true" />
+        </property>
+        <property name="sintomas" type="string">
+            <column name="sintomas" length="100" not-null="true" />
+        </property>
+        <property name="fecha" type="string">
+            <column name="fecha" length="40" not-null="true" />
+        </property>
+        <property name="hora" type="string">
+            <column name="hora" length="30" not-null="true" />
+        </property>
+        <property name="estadoConsulta" type="int">
+            <column name="estado_consulta" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

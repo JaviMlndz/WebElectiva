@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-11-2018 10:46:32 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.pojos.Expediente" table="expediente" catalog="clinicautec_db" optimistic-lock="version">
+        <id name="idExpediente" type="java.lang.Integer">
+            <column name="id_expediente" />
+            <generator class="identity" />
+        </id>
+        <property name="nombres" type="string">
+            <column name="nombres" length="40" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="40" not-null="true" />
+        </property>
+        <property name="domicilio" type="string">
+            <column name="domicilio" length="200" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="40" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="12" not-null="true" />
+        </property>
+        <property name="genero" type="string">
+            <column name="genero" length="15" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="string">
+            <column name="fecha_nacimiento" length="20" not-null="true" />
+        </property>
+        <property name="lugarNacimiento" type="string">
+            <column name="lugar_nacimiento" length="80" not-null="true" />
+        </property>
+        <property name="edad" type="int">
+            <column name="edad" not-null="true" />
+        </property>
+        <property name="ocupacion" type="string">
+            <column name="ocupacion" length="40" not-null="true" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="observaciones" length="500" not-null="true" />
+        </property>
+        <property name="alergias" type="string">
+            <column name="alergias" length="300" />
+        </property>
+        <property name="duiPaciente" type="string">
+            <column name="dui_paciente" length="20" not-null="true" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

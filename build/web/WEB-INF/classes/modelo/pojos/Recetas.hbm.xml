@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12-11-2018 10:46:32 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.pojos.Recetas" table="recetas" catalog="clinicautec_db" optimistic-lock="version">
+        <id name="idReceta" type="java.lang.Integer">
+            <column name="id_receta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="enfermeras" class="modelo.pojos.Enfermeras" fetch="select">
+            <column name="dui_enfermera" length="20" not-null="true" />
+        </many-to-one>
+        <many-to-one name="paciente" class="modelo.pojos.Paciente" fetch="select">
+            <column name="dui_paciente" length="20" not-null="true" />
+        </many-to-one>
+        <property name="fechaPrescripcion" type="string">
+            <column name="fecha_prescripcion" length="20" not-null="true" />
+        </property>
+        <property name="farmaco" type="string">
+            <column name="farmaco" length="40" not-null="true" />
+        </property>
+        <property name="unidades" type="int">
+            <column name="unidades" not-null="true" />
+        </property>
+        <property name="pauta" type="string">
+            <column name="pauta" length="40" not-null="true" />
+        </property>
+        <property name="indicacionesFarmaco" type="string">
+            <column name="indicaciones_farmaco" length="150" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
