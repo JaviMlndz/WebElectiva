@@ -14,10 +14,10 @@
             <ui:define name="content">
                 <h3>LISTADO DE PAGOS</h3>
                 <h:form>
-                    
+                    <h:dataTable  id="tablaPagos"  var="pago" value="#{controlador_consultas.listaConsulta}" >
                     <h:outputText>Ingrese Nombre:</h:outputText>
                     <h:inputText value="#{controlador_consultas.consulta.paciente}"></h:inputText>
-                   
+                   </h:dataTable>
                 
                 </h:form>
             </ui:define>
